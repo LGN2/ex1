@@ -10,7 +10,7 @@ public class SecurityConfig {
  @Bean PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder();}
  @Bean SecurityFilterChain filterChain(HttpSecurity http)throws Exception{
   return http.csrf(csrf->csrf.ignoringRequestMatchers("/api/**"))
-   .authorizeHttpRequests(a->a.requestMatchers("/","/index.html","/api/health","/css/**","/js/**").permitAll().anyRequest().authenticated())
+   .authorizeHttpRequests(a->a.requestMatchers("/","/*.html","/css/**","/js/**","/api/health").permitAll().anyRequest().authenticated())
    .httpBasic(b->{}).build();
  }
 }
