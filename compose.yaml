@@ -1,0 +1,28 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-property_management}
+      MYSQL_USER: ${MYSQL_USER:-property}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-property}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+    ports: ["3306:3306"]
+    volumes: [property_mysql:/var/lib/mysql]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  app:
+    build: .
+    depends_on:
+      mysql: {condition: service_healthy}
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+      DB_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-property_management}
+      DB_USER: ${MYSQL_USER:-property}
+      DB_PASSWORD: ${MYSQL_PASSWORD:-property}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    ports: ["8080:8080"]
+volumes:
+  property_mysql:
