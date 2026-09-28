@@ -1,19 +1,25 @@
 # Progress
 
 ## Completed
-- Repository foundation, Maven, Docker Compose, MySQL and Flyway wiring.
-- Initial relational schema with owner-scoped core entities.
-- Arabic RTL landing page and health endpoint.
+- Spring Boot 3.5 / Java 21 Maven foundation.
+- MySQL 8.4, Flyway and Docker Compose configuration.
+- Core schema for users, buildings, units, tenants, leases and maintenance requests.
+- Basic security filter and password encoder.
+- Health, dashboard summary, building listing/creation/update endpoints.
+- Arabic landing page, login page, dashboard page and property page.
+- Initial Postman collection and GitHub Actions CI.
+- Docker build corrected to use a Maven builder image.
 
 ## Remaining
-- Complete session authentication and CSRF.
-- Add DTO-based CRUD controllers/services for all modules.
-- Add billing, cheque lifecycle, arrears and dashboard.
-- Add maintenance workflow and Spring AI fallback.
-- Add full frontend pages, Postman collection and integration tests.
+- Replace development placeholder authentication with database-backed sessions and CSRF.
+- Add floors, units, tenants and leases DTO/service layers.
+- Add rent dues, payments, allocations, cheques, deposits and arrears.
+- Add maintenance assignment/status history and Spring AI fallback.
+- Add complete bilingual frontend pages and owner/tenant authorization isolation.
+- Add full integration test suite and execute it against MySQL.
 
 ## Test results
-Not yet executed because this initial commit has just been created.
+GitHub Actions is configured, but a complete test run has not been executed in this environment.
 
 ## Next action
-Implement account/security vertical slice, then properties and tenancy APIs.
+Continue with database-backed account seeding and billing vertical slice.
