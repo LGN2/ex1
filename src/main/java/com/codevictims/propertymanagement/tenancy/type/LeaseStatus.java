@@ -1,0 +1,2 @@
+package com.codevictims.propertymanagement.tenancy.type;
+public enum LeaseStatus { ACTIVE, INACTIVE, PENDING, OPEN, CLOSED, RESIDENTIAL, COMMERCIAL, SCHEDULED, DEPOSITED, CLEARED, BOUNCED, CANCELLED, CARD, CASH, BANK_TRANSFER, CHEQUE }
